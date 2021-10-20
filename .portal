@@ -1,0 +1,40 @@
+#
+# The name of your portal
+#
+# When deployed it will be deployed at http://<name>.vertigo.stitchfix.com
+#
+name: 'helloworld'
+
+#
+# The command to run when your portal starts
+#
+# This can be overidden locally using the portal open command, but
+# must be provided for a deploy
+#
+run: "source /stitchfix/code/khan/setup-server && uvicorn run:khan.server --port 5000 --reload-dir . --reload"
+
+#
+# A custom installation script to run when portal is build
+# You can provide files to copy over during the installation step
+# This command is run *BEFORE* your entire code is copied over!
+#
+installation:
+  files:
+    - requirements.txt
+  command: 'pip3.6 install -r requirements.txt'
+
+#
+# The base image of your docker container
+#
+image:
+  name: docker.vertigo.stitchfix.com:5000/z-khan
+
+#
+# The port that you want your container to expose
+#
+# This is required to do anything useful locally, and absolutely required to deploy
+#
+port:
+  container: 80
+  host: 5000 # Only used in development
+

@@ -1,0 +1,5 @@
+.khan-cache
+*.egg-info
+build
+__pycache__
+*.pyc
