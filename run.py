@@ -23,7 +23,10 @@ from typing import Dict, List
 #
 @khan.get("/my_func")
 async def my_func(a: int, b: str):
-    return b * random.randint(1, a)
+    '''Picks a random number between 1-a and repeats the string'''
+    repeat = random.randint(1, a)
+    print("We're repeating the word %s %d times"%(b, repeat))
+    return b * repeat
 
 
 #
